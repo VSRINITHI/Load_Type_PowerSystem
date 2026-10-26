@@ -1,0 +1,153 @@
+{
+  "champion": "Decision Tree",
+  "selection": "simplest model within 0.002 of best forward-CV macro-F1",
+  "final_holdout": "2018-12",
+  "n_test": 2976,
+  "december_exposure_note": "December also used in earlier exploratory prototyping; treat as indicative, not unbiased.",
+  "forward_cv": {
+    "Dummy (most frequent)": {
+      "cv_accuracy": 0.50824,
+      "cv_f1_macro": 0.22427,
+      "cv_f1_std": 0.01287
+    },
+    "Rule baseline (slot \u00d7 season \u00d7 weekday)": {
+      "cv_accuracy": 0.93113,
+      "cv_f1_macro": 0.9302,
+      "cv_f1_std": 0.04427
+    },
+    "Logistic Regression": {
+      "cv_accuracy": 0.85735,
+      "cv_f1_macro": 0.82865,
+      "cv_f1_std": 0.13023
+    },
+    "Decision Tree": {
+      "cv_accuracy": 0.99087,
+      "cv_f1_macro": 0.99,
+      "cv_f1_std": 0.0076
+    },
+    "Random Forest": {
+      "cv_accuracy": 0.98592,
+      "cv_f1_macro": 0.98443,
+      "cv_f1_std": 0.01441
+    },
+    "HistGradientBoosting": {
+      "cv_accuracy": 0.98958,
+      "cv_f1_macro": 0.9895,
+      "cv_f1_std": 0.00837
+    },
+    "HistGradientBoosting (tuned)": {
+      "cv_accuracy": 0.98951,
+      "cv_f1_macro": 0.98944,
+      "cv_f1_std": 0.00858
+    }
+  },
+  "december": {
+    "accuracy": 0.98454,
+    "balanced_acc": 0.97868,
+    "precision_macro": 0.98392,
+    "recall_macro": 0.97868,
+    "f1_macro": 0.98127,
+    "f1_wtd": 0.98451
+  },
+  "december_accuracy_boot95": [
+    0.96606,
+    0.99664
+  ],
+  "december_per_class": {
+    "Light_Load": {
+      "precision": 0.98579,
+      "recall": 0.99427,
+      "f1-score": 0.99001,
+      "support": 1744.0
+    },
+    "Medium_Load": {
+      "precision": 0.98132,
+      "recall": 0.97017,
+      "f1-score": 0.97571,
+      "support": 704.0
+    },
+    "Maximum_Load": {
+      "precision": 0.98464,
+      "recall": 0.97159,
+      "f1-score": 0.97807,
+      "support": 528.0
+    },
+    "macro avg": {
+      "precision": 0.98392,
+      "recall": 0.97868,
+      "f1-score": 0.98127,
+      "support": 2976.0
+    },
+    "weighted avg": {
+      "precision": 0.98453,
+      "recall": 0.98454,
+      "f1-score": 0.98451,
+      "support": 2976.0
+    }
+  },
+  "rule_baseline_december": {
+    "Light_Load": {
+      "precision": 0.96316,
+      "recall": 0.83945,
+      "f1-score": 0.89706,
+      "support": 1744.0
+    },
+    "Medium_Load": {
+      "precision": 0.80769,
+      "recall": 0.95455,
+      "f1-score": 0.875,
+      "support": 704.0
+    },
+    "Maximum_Load": {
+      "precision": 0.80769,
+      "recall": 0.95455,
+      "f1-score": 0.875,
+      "support": 528.0
+    },
+    "macro avg": {
+      "precision": 0.85951,
+      "recall": 0.91618,
+      "f1-score": 0.88235,
+      "support": 2976.0
+    },
+    "weighted avg": {
+      "precision": 0.8988,
+      "recall": 0.8871,
+      "f1-score": 0.88793,
+      "support": 2976.0
+    }
+  },
+  "ablation": {
+    "1. Calendar only": {
+      "n_features": 6,
+      "fwdCV acc": 0.90627,
+      "fwdCV macro-F1": 0.90745,
+      "fwdCV macro-F1 std": 0.04178,
+      "Dec acc": 0.8629,
+      "Dec macro-F1": 0.85847
+    },
+    "2. Calendar + Electrical": {
+      "n_features": 14,
+      "fwdCV acc": 0.94747,
+      "fwdCV macro-F1": 0.94815,
+      "fwdCV macro-F1 std": 0.02402,
+      "Dec acc": 0.94052,
+      "Dec macro-F1": 0.93285
+    },
+    "3. + Temporal (final feature set)": {
+      "n_features": 21,
+      "fwdCV acc": 0.99087,
+      "fwdCV macro-F1": 0.99,
+      "fwdCV macro-F1 std": 0.0076,
+      "Dec acc": 0.98454,
+      "Dec macro-F1": 0.98127
+    }
+  },
+  "versions": {
+    "python": "3.11.0",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.0",
+    "numpy": "2.4.6",
+    "joblib": "1.6.0"
+  }
+}
